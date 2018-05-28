@@ -6,9 +6,19 @@ public class Task {
 	private ArrayList<Task> prevTasks = new ArrayList<Task>();
 	private ArrayList<Task> nextTasks = new ArrayList<Task>(); // zadania oczekujące na obecne
 	private Boolean isCompleted = false; // true gdy zakończone, false gdy nie
+	private int forest = 0;
+	private int outTree = 0;
 
 	public Task() {
 
+	}
+
+	public int getForest() {
+		return forest;
+	}
+
+	public void setForest(int forest) {
+		this.forest = forest;
 	}
 
 	public Task(int taskNumber) {
@@ -53,5 +63,13 @@ public class Task {
 
 	public void setIsCompleted(Boolean isCompleted) {
 		this.isCompleted = isCompleted;
+	}
+
+	public int getOutTree() {
+		return outTree;
+	}
+
+	public void setOutTree(int outTree) {
+		this.outTree = outTree;
 	}
 }

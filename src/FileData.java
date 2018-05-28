@@ -34,6 +34,12 @@ public class FileData {
 		for (int i = 1; i < fileTasks.size(); i++) {
 			int taskNumber = Integer.parseInt(fileTasks.get(i).get(0));
 			Task task = new Task(taskNumber);
+			if(fileTasks.get(i).size() == 1){
+				TaskManager.sum += 1;
+				task.setOutTree(1);
+				task.setForest(1);
+			}
+			
 			TaskManager.addTask(task);
 		}
 

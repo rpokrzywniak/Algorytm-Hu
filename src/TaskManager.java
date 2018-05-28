@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class TaskManager {
 	public static ArrayList<Task> tasks = new ArrayList<Task>();
+	public static int sum = 0;
 
 	public static void addTask(Task task) {
 		tasks.add(task);
@@ -17,9 +18,12 @@ public class TaskManager {
 		if (task1.getTaskNumber() > task2.getTaskNumber())
 			Main.error("Higher number task, can't be before lower one");
 
-		if (tasks.contains(task1) && tasks.contains(task2)) {
+		if (tasks.contains(task1) && tasks.contains(task2)) {		
 			task1.getNextTasks().add(task2);
 			task2.getPrevTasks().add(task1);
+			task2.setForest(task2.getForest()+task1.getForest());
+			if(sum == 1) task2.setOutTree(1);
+			task1.setForest(0);
 		} else {
 			Main.error("One of tasks, doesn't exist");
 		}
@@ -45,7 +49,6 @@ public class TaskManager {
 		for (Task task : tasks) {
 			if (task.getTaskNumber() == taskNumber) {
 				task.setIsCompleted(true);
-				tasks.remove(task);
 				removeFromPrev(task);
 				break;
 			}
